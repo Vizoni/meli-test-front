@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         font-family: Open-Sans, Helvetica, Sans-Serif;
 
+        --extra-small: 0.75rem;
         --small: 0.875rem;
         --normal: 1rem;
         --normal-medium: 1.125rem;
@@ -20,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
         --bg-light-green: #adddad;
 
 
-        @media (min-width: 550px) {
+        /* @media (min-width: 550px) {
             font-size: var(--small);
         }
 
@@ -30,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
 
         @media (min-width: 1126px) {
             font-size: var(--medium-large);
-        }
+        } */
         
     }
 

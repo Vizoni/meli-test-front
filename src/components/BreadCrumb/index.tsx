@@ -1,13 +1,15 @@
+import { useState } from "react";
+
 import { Container } from "./styled";
 
-function BreadCrumb({ categoriesArray }) {
+function BreadCrumb({ categories }) {
 	function formatBreadCrumb() {
 		let finalHTML = "";
-		categoriesArray.forEach((categories: Category, index: number) => {
-			if (index == categoriesArray.length - 1) {
-				finalHTML += categories.name;
+		categories.forEach((category: Category, index: number) => {
+			if (index == categories.length - 1) {
+				finalHTML += category.name;
 			} else {
-				finalHTML += categories.name + " > ";
+				finalHTML += category.name + " > ";
 			}
 		});
 		return <span>{finalHTML}</span>;

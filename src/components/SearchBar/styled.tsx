@@ -12,6 +12,7 @@ export const Form = styled.form`
 		width: 93%;
 		font-size: var(--normal-medium);
 		border: 0;
+		outline: 0;
 		border-radius: 0.2rem 0 0 0.2rem;
 		padding: 0.75rem;
 
@@ -19,6 +20,12 @@ export const Form = styled.form`
 			color: var(--grey);
 			opacity: 1;
 		}
+	}
+
+	input:focus {
+		/* border: 3px solid red; */
+		border: 0;
+		outline: none !important;
 	}
 
 	button {

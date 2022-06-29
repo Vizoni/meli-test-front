@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { Form } from "./styled";
+import { useProducts } from "./../../context/Products";
 function SearchBar() {
 	const [searchText, setSearchText] = useState("");
+	const { listProducts } = useProducts();
 
-	function searchProducts() {
-		// call products provider
+	function searchProducts(e) {
+		e.preventDefault();
+		if (!searchText) {
+			return;
+		}
+		listProducts(searchText);
 	}
 
 	return (
