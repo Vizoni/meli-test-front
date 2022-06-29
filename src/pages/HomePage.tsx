@@ -1,5 +1,8 @@
+import { useEffect } from "react";
 import BreadCrumb from "./../components/BreadCrumb";
+import { useProducts } from "./../context/Products";
 function HomePage() {
+	const { listProducts } = useProducts();
 	const categoryList = [
 		{
 			id: "MLA409431",
@@ -18,6 +21,12 @@ function HomePage() {
 			name: "Apósitos",
 		},
 	];
+
+	useEffect(() => {
+		console.log("vai chamar produtos");
+		listProducts("Iphone");
+	}, []);
+
 	return (
 		<>
 			<BreadCrumb categoriesArray={categoryList} />
