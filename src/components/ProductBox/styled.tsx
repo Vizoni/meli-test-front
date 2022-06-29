@@ -8,15 +8,19 @@ export const Container = styled.div`
 	cursor: pointer;
 
 	img {
-		width: 11.25rem;
-		height: 11.25rem;
+		/* width: 11.25rem;
+		height: 11.25rem; */
+		width: 100%;
+		max-width: 180px;
+		/* max-height: 180px; */
+		height: auto;
 		border-radius: 4px;
 		margin: 1rem;
 	}
 
 	span {
 		font-size: var(--extra-small);
-		margin: 2rem 1em 0 0;
+		margin: 3rem 5rem;
 	}
 `;
 

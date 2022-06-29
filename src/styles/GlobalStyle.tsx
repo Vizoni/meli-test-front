@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     :root {
         font-family: Open-Sans, Helvetica, Sans-Serif;
+        display: flex;
 
         --extra-small: 0.75rem;
         --small: 0.875rem;
@@ -35,6 +36,19 @@ export const GlobalStyle = createGlobalStyle`
         
     }
 
+    #root {
+        display: flex;
+        flex-flow: column;
+    }
+    
+    #root > * {
+        padding: 0 10vw;
+        @media screen and (max-width: 700px) {
+            padding: 0 5vw;
+        }
+
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -42,7 +56,11 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     body {
-        background-color: var(--light-grey)
+        background-color: var(--light-grey);
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        width: 100%;
     }
 `;
 

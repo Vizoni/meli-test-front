@@ -1,10 +1,12 @@
 import SearchBar from "./../SearchBar";
-import { Container } from "./styled";
+import { Container, Logo } from "./styled";
 
 function Header() {
 	return (
 		<Container>
-			<img src="/icons/Logo_ML@2x.png.png" />
+			<Logo>
+				<img src="/icons/Logo_ML@2x.png.png" />
+			</Logo>
 			<SearchBar />
 		</Container>
 	);

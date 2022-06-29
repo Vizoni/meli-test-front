@@ -5,7 +5,7 @@ export const Form = styled.form`
 	justify-content: center;
 	align-self: center;
 	height: 3.5vh;
-	width: 70%;
+	width: 100%;
 	margin-left: 1rem;
 
 	input {
@@ -34,5 +34,10 @@ export const Form = styled.form`
 		border-radius: 0 0.2rem 0.2rem 0;
 		background-color: var(--light-grey);
 		cursor: pointer;
+
+		/* img {
+			width: 100%;
+			max-width: 25%;
+		} */
 	}
 `;
