@@ -6,21 +6,26 @@ function ProductBox({ product }) {
 		// deve redirecionar a página de detalhes do produto
 	}
 
+	function formatPrice() {
+		return product.price.decimals? `$ ${product.price.amount}.${product.price.decimals}` : `$ ${product.price.amount}`
+	}
+
 	return (
 		<Container onClick={handleClick}>
 			<LeftSide>
-				<img src={product.thumbnail} />
+				<img src={product.picture} />
 				<div>
 					<h1>
-						$ {product.price}
-						{product.shipping.free_shipping && (
+						{formatPrice()}
+						{product.free_shipping && (
 							<img src="/icons/ic_shipping.png" />
 						)}
 					</h1>
 					<h3>{product.title}</h3>
 				</div>
 			</LeftSide>
-			<span>{product.address.city_name}</span>
+			{/* FALTA CIDADE */}
+			<span>{product?.address?.city_name || ""}</span>
 		</Container>
 	);
 }
