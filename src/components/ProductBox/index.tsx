@@ -1,33 +1,27 @@
-import { useProducts } from "../../context/Products";
-import { Container, LeftSide, FreeShippingIcon, ProductPicture } from "./styled";
+import { Container, LeftSide, FreeShippingIcon, Middle, ProductPicture, Title, Price, City, ProductInfo } from "./styled";
 import {useNavigate} from 'react-router-dom'
+import {  formatCurrency } from "./../../utils/currency"
 function ProductBox({ product }) {
 	const navigate = useNavigate()
 	
 	function handleClick() {
 		navigate(`/items/${product.id}`)
 	}
-
-	function formatPrice() {
-		return product.price.decimals? `$ ${product.price.amount}.${product.price.decimals}` : `$ ${product.price.amount}`
-	}
-
 	return (
 		<Container onClick={handleClick}>
 			<LeftSide>
-				<ProductPicture src={product.picture} />
-				<div>
-					<h1>
-						{formatPrice()}
+				<ProductPicture src={product.thumbnail} />
+				<ProductInfo>
+					<Middle>
+						<Price>{formatCurrency(product.price.amount, product.price.decimals)}</Price>
 						{product.free_shipping && (
 							<FreeShippingIcon src="/icons/ic_shipping.png" />
 						)}
-					</h1>
-					<h3>{product.title}</h3>
-				</div>
+					</Middle>
+					<Title>{product.title}</Title>
+				</ProductInfo>
 			</LeftSide>
-			{/* FALTA CIDADE */}
-			<span>{product?.address?.city_name || ""}</span>
+			<City>{product.city}</City>
 		</Container>
 	);
 }

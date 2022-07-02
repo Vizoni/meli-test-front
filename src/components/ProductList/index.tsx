@@ -3,7 +3,6 @@ import { Container } from "./styled";
 import ProductBox from "./../ProductBox";
 function ProductList() {
 	const { products } = useProducts();
-	console.log("prod", products);
 	return (
 		<Container>
 			{products.map((product) => {

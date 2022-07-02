@@ -7,23 +7,30 @@ export const Container = styled.div`
 	justify-content: space-between;
 	flex-direction: column;
 	padding: 2rem;
-
-	span {
-		font-size: var(--extra-small);
-		margin: 2rem 0;
-		text-align: justify;
-	}
 `;
+
+export const DescriptionBox = styled.span`
+	font-size: var(--extra-small);
+	margin: 2rem 0;
+	text-align: justify;
+`
 
 export const Upper = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	overflow: hidden;
+	
+	@media (max-width: 900px) {
+		display: flex;
+		flex-direction: column;
+	} 
 `
 
 export const BuyBox = styled.div`
 	display: flex;
 	flex-direction: column;
+	margin: 1rem;
 
 	button {
 		background-color: var(--blue);
@@ -33,18 +40,36 @@ export const BuyBox = styled.div`
 		border-radius: 0.2rem;
 		padding: 0.75rem;
 		cursor: pointer;
+
+		@media (max-width: 900px) {
+			margin-bottom: 2rem;
+		} 
 	}
+
 `
 
 export const PriceDetail = styled.div`
 	display: flex;
 	margin: 2rem 0;
-	h3 {
+
+	small {
 		font-size: var(--medium);
 	}
 
-	h2 {
-		font-size: var(--large)
+	span {
+		font-size: var(--large);
+	}
+
+	
+	@media (max-width: 1000px) {
+		small {
+			font-size: var(--normal-medium);
+		}
+	
+		span {
+			font-size: var(--medium-large)
+		}
+
 	}
 `
 
@@ -64,31 +89,21 @@ export const FreeShippingIcon = styled.img`
 `
 
 export const ProductPicture = styled.img`
-	width: 42.5rem;
-	/* width: 10rem; */
+	/* width: 42.5rem; */
+	width: 100%;
 	max-width: 680px;
 	height: auto;
 	border-radius: 4px;
-	margin: 1rem;
+	margin-bottom: 1rem;
+	object-fit: center;
+	
+	@media (min-width: 600px) and (max-width: 899px) {
+		width: 100%;
+	} 
+	@media (max-width: 950px) {
+		width: 100%;
+	} 
+
+	
 `
 
-export const LeftSide = styled.div`
-	display: flex;
-	flex-flow: row;
-
-	div {
-		margin-top: 2rem;
-
-		h1 {
-			img {
-				width: 1rem;
-				height: 1rem;
-				margin: 0 0 0 0.5rem;
-			}
-		}
-
-		h3 {
-			margin-top: 2rem;
-		}
-	}
-`;

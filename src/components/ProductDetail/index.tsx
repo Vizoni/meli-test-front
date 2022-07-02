@@ -1,32 +1,37 @@
-import { useProducts } from "../../context/Products";
-import { Container, FreeShippingIcon, Upper, ProductPicture, BuyBox, ConditionSoldQuantity, PriceDetail } from "./styled";
+import { Container, Upper, ProductPicture, BuyBox, ConditionSoldQuantity, PriceDetail, DescriptionBox } from "./styled";
+import {  formatCurrencyWithoutDecimal } from "./../../utils/currency"
 function ProductDetail({ product }) {
-
-	function formatPrice() {
-		return product?.price.decimals? `$ ${product.price.amount}.${product.price.decimals}` : `$ ${product?.price.amount}`
-	}
 
 	function handleClick() {
 		alert("Agradecemos seu interesse.")
 	}
 
+	function translateCondition(condition: String) {
+		condition = condition.toLowerCase();
+		if (condition === "new") {
+			return "nuevo"
+		}
+		return condition;
+	}
+
+
 	return (
 		<Container>
 			<Upper>
-				<ProductPicture src={product.picture} />
+				<ProductPicture src={product.pictures[0] || product.pictures[1]} />
 				<BuyBox>
-					<ConditionSoldQuantity><span>{product.condition} - {product.sold_quantity}</span> vendidos</ConditionSoldQuantity>
+					<ConditionSoldQuantity><span>{translateCondition(product.condition)} - {product.sold_quantity}</span> vendidos</ConditionSoldQuantity>
 					<h3>{product.title}</h3>
 					<PriceDetail>
-						<h2>$ {product.price.amount}</h2>
+						<span>{formatCurrencyWithoutDecimal(product.price.amount)}</span>
 						<small>{product.price.decimals}</small>
 					</PriceDetail>
 					<button onClick={handleClick}>Comprar</button>
 				</BuyBox>
 
 			</Upper>
-			<h1>Descrição do produto</h1>
-			<span>{product.description}</span>
+			<h1>Descrípcion del producto</h1>
+			<DescriptionBox>{product.description}</DescriptionBox>
 		</Container>
 	);
 }

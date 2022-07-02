@@ -9,7 +9,7 @@ export const Container = styled.header`
 `;
 
 export const Logo = styled.div`
-	align-self: end;
+	align-self: center;
 	cursor: pointer;
 
 	img {
