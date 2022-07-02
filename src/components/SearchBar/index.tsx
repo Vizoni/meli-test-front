@@ -5,7 +5,7 @@ function SearchBar() {
 	const [searchText, setSearchText] = useState("");
 	const navigate = useNavigate();
 
-	function searchProducts(e) {
+	function searchProducts(e: any) {
 		e.preventDefault();
 		if (!searchText) {
 			return;

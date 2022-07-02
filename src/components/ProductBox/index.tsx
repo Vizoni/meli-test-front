@@ -1,7 +1,9 @@
 import { Container, LeftSide, FreeShippingIcon, Middle, ProductPicture, Title, Price, City, ProductInfo } from "./styled";
 import {useNavigate} from 'react-router-dom'
-import {  formatCurrency } from "./../../utils/currency"
-function ProductBox({ product }) {
+import {  formatCurrency } from "../../shared/currency"
+import { ProductDetailPropTypes } from "../../shared/types/components.interfaces";
+
+function ProductBox({ product }: ProductDetailPropTypes ) {
 	const navigate = useNavigate()
 	
 	function handleClick() {

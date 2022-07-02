@@ -1,6 +1,8 @@
 import { Container, Upper, ProductPicture, BuyBox, ConditionSoldQuantity, PriceDetail, DescriptionBox } from "./styled";
-import {  formatCurrencyWithoutDecimal } from "./../../utils/currency"
-function ProductDetail({ product }) {
+import {  formatCurrencyWithoutDecimal } from "../../shared/currency"
+import { ProductDetailPropTypes } from "../../shared/types/components.interfaces";
+
+function ProductDetail({ product }: ProductDetailPropTypes) {
 
 	function handleClick() {
 		alert("Agradecemos seu interesse.")

@@ -1,11 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getProductsByText, getProductById } from "../services/Products";
+import { Product, ProductsContextProps, ProductsProviderProps } from "../shared/types/product.interfaces";
 
-export const ProductsContext = React.createContext({});
+export const ProductsContext = React.createContext({} as ProductsContextProps);
 
-export function ProductsProvider({ children }) {
-	const [products, setProducts] = useState([]);
-	const [selectedProduct, setSelectedProduct] = useState()
+export function ProductsProvider({ children }: ProductsProviderProps) {
+	const [products, setProducts] = useState<Product[]>([]);
+	const [selectedProduct, setSelectedProduct] = useState<Product>({
+			id: "",
+			title: "",
+			categories: [],
+			price: {
+				amount: 0,
+				decimals: 0,
+				currency: "",
+			},
+			thumbnail: "",
+			pictures: [],
+			condition: "",
+			free_shipping: false,
+			sold_quantity: 0,
+			city: "",
+			description: ""
+	})
 	const [categories, setCategories] = useState([]);
 
 	async function listProducts(text: String) {
@@ -14,7 +31,7 @@ export function ProductsProvider({ children }) {
 		setCategories(productsResponse.data.categories);
 	}
 
-	async function getProduct(id: Number) {
+	async function getProduct(id: string) {
 		const productResponse = await getProductById(id);
 		console.log("get product context", productResponse)
 		setSelectedProduct(productResponse.data.item);

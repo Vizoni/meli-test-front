@@ -15,7 +15,7 @@ function HomePage() {
 
 	async function userIsSearching() {
 		if (searchParams) {
-			const searchText = searchParams.get("search")
+			const searchText = searchParams.get("search") as string;
 			listProducts(searchText)
 		}
 	}
@@ -25,7 +25,7 @@ function HomePage() {
 			{products.length > 0 && (
 				<>
 					<BreadCrumb categories={categories} />
-					<ProductList products={products} />
+					<ProductList />
 				</>
 			)}
 		</Page>

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { BreadCrumbPropTypes } from "../../shared/types/components.interfaces";
 
 import { Container, CategoryLink } from "./styled";
 
-function BreadCrumb({ categories }) {
+function BreadCrumb({ categories }: BreadCrumbPropTypes) {
 
 	function formatBreadCrumb() {
-		function isLastCategory(index) {
+		function isLastCategory(index: number) {
 			return index === categories.length-1
 		}
 
@@ -17,7 +17,7 @@ function BreadCrumb({ categories }) {
 							<CategoryLink href="#" last={isLastCategory(index)} disabled={isLastCategory(index)}>
 								{category}
 							</CategoryLink>
-							{index < categories.length-1 && (<span> > </span>)}
+							{index < categories.length-1 && (<span> {">"} </span>)}
 						</>
 					)
 				})} 
@@ -29,3 +29,4 @@ function BreadCrumb({ categories }) {
 }
 
 export default BreadCrumb;
+

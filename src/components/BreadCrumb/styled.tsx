@@ -16,7 +16,11 @@ export const CategoryLink = styled.a`
 	font-size: var(--small);
 	text-decoration: none;
 
-	${({last}) => last && `
+	${({last}: PropType) => last && `
 		font-weight: 600
 	`}
 `
+export type PropType = {
+	last: boolean;
+	disabled: boolean;
+}
