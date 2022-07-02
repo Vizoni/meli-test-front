@@ -25,7 +25,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
 	})
 	const [categories, setCategories] = useState([]);
 
-	async function listProducts(text: String) {
+	async function listProducts(text: string) {
 		const productsResponse = await getProductsByText(text);
 		setProducts(productsResponse.data.items);
 		setCategories(productsResponse.data.categories);

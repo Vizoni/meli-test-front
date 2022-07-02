@@ -8,7 +8,7 @@ function ProductDetail({ product }: ProductDetailPropTypes) {
 		alert("Agradecemos seu interesse.")
 	}
 
-	function translateCondition(condition: String) {
+	function translateCondition(condition: string): string {
 		condition = condition.toLowerCase();
 		if (condition === "new") {
 			return "nuevo"
