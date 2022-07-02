@@ -10,18 +10,18 @@ function BreadCrumb({ categories }: BreadCrumbPropTypes) {
 		}
 
 		return(
-			<>
+			<div data-testId="breadcrumb-component">
 				{categories.map((category: string, index: number) => {
 					return (
 						<>
-							<CategoryLink href="#" last={isLastCategory(index)} disabled={isLastCategory(index)}>
+							<CategoryLink data-testId="breadcrumb-item" href="#" last={isLastCategory(index)} disabled={isLastCategory(index)}>
 								{category}
 							</CategoryLink>
-							{index < categories.length-1 && (<span> {">"} </span>)}
+							{index < categories.length-1 && (<span data-testId="separator"> {">"} </span>)}
 						</>
 					)
 				})} 
-			</>
+			</div>
 		)	
 	}
 
