@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
         --normal-medium: 1.125rem;
         --medium: 1.5rem;
         --medium-large: 1.75rem;
-        --large: 2.85rem;
+        --large: 2.87rem;
 
         --yellow: #ffe600;
         --black: #333333;

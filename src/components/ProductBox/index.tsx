@@ -1,9 +1,11 @@
 import { useProducts } from "../../context/Products";
-import { Container, LeftSide } from "./styled";
+import { Container, LeftSide, FreeShippingIcon, ProductPicture } from "./styled";
+import {useNavigate} from 'react-router-dom'
 function ProductBox({ product }) {
+	const navigate = useNavigate()
+	
 	function handleClick() {
-		alert("clicou");
-		// deve redirecionar a página de detalhes do produto
+		navigate(`/items/${product.id}`)
 	}
 
 	function formatPrice() {
@@ -13,12 +15,12 @@ function ProductBox({ product }) {
 	return (
 		<Container onClick={handleClick}>
 			<LeftSide>
-				<img src={product.picture} />
+				<ProductPicture src={product.picture} />
 				<div>
 					<h1>
 						{formatPrice()}
 						{product.free_shipping && (
-							<img src="/icons/ic_shipping.png" />
+							<FreeShippingIcon src="/icons/ic_shipping.png" />
 						)}
 					</h1>
 					<h3>{product.title}</h3>

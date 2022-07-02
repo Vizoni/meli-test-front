@@ -1,19 +1,22 @@
 import { useState } from "react";
 
-import { Container } from "./styled";
+import { Container, CategoryLink } from "./styled";
 
 function BreadCrumb({ categories }) {
 
 	function formatBreadCrumb() {
+		function isLastCategory(index) {
+			return index === categories.length-1
+		}
+
 		return(
 			<>
 				{categories.map((category: string, index: number) => {
 					return (
 						<>
-							<a href="#">
+							<CategoryLink href="#" last={isLastCategory(index)} disabled={isLastCategory(index)}>
 								{category}
-							</a>
-							{console.log("index", index, categories.length-1)}
+							</CategoryLink>
 							{index < categories.length-1 && (<span> > </span>)}
 						</>
 					)
