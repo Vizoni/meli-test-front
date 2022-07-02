@@ -1,20 +1,16 @@
 import { useState } from "react";
 import { Form } from "./styled";
-import { Navigate, useHref } from 'react-router-dom'
-import { useProducts } from "./../../context/Products";
+import { useNavigate } from 'react-router-dom'
 function SearchBar() {
 	const [searchText, setSearchText] = useState("");
-	const { listProducts } = useProducts()
+	const navigate = useNavigate();
 
 	function searchProducts(e) {
 		e.preventDefault();
-		console.log("aaaa", searchText)
 		if (!searchText) {
 			return;
 		}
-		listProducts(searchText);
-		// cannot useNavigate because component is not inside <Route> on App.js
-		// return <Navigate to={`items?search=${searchText}`} replace/>
+		navigate(`/items?search=${searchText}`)
 	}
 
 	return (

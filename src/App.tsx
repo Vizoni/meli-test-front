@@ -9,8 +9,8 @@ function App() {
 	return (
 		<>
 			<ProductsProvider>
-				<Header />
 				<BrowserRouter>
+				<Header />
 					<Suspense fallback={<div>Carregando...</div>}>
 						<Routes>
 							<Route path="/" element={<HomePage />} />
