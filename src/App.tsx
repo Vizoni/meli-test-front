@@ -1,9 +1,10 @@
-import { useState, Suspense } from "react";
-import { BrowserRouter, Routes, Navigate, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import ProductPage from "./pages/ProductPage";
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import { ProductsProvider } from "./context/Products";
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const ProductPage = lazy(() => import('./pages/ProductPage'))
 
 function App() {
 	return (
