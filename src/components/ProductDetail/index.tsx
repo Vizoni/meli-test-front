@@ -20,20 +20,20 @@ function ProductDetail({ product }: ProductDetailPropTypes) {
 	return (
 		<Container>
 			<Upper>
-				<ProductPicture src={product.pictures[0] || product.pictures[1]} />
+				<ProductPicture src={product.pictures[0] || product.pictures[1]} alt="Imagem do produto" tabIndex={0}/>
 				<BuyBox>
-					<ConditionSoldQuantity><span>{translateCondition(product.condition)} - {product.sold_quantity}</span> vendidos</ConditionSoldQuantity>
-					<h3>{product.title}</h3>
-					<PriceDetail>
+					<ConditionSoldQuantity tabIndex={0}><span>{translateCondition(product.condition)} - {product.sold_quantity}</span> vendidos</ConditionSoldQuantity>
+					<h3 tabIndex={0}>{product.title}</h3>
+					<PriceDetail tabIndex={0}>
 						<span>{formatCurrencyWithoutDecimal(product.price.amount)}</span>
 						<small>{product.price.decimals}</small>
 					</PriceDetail>
-					<button onClick={handleClick}>Comprar</button>
+					<button onClick={handleClick} tabIndex={0}>Comprar</button>
 				</BuyBox>
 
 			</Upper>
 			<h1>Descrípcion del producto</h1>
-			<DescriptionBox>{product.description}</DescriptionBox>
+			<DescriptionBox tabIndex={0}>{product.description}</DescriptionBox>
 		</Container>
 	);
 }

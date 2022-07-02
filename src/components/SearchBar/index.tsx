@@ -15,14 +15,19 @@ function SearchBar() {
 
 	return (
 		<Form onSubmit={searchProducts}>
+			<label htmlFor="searchText" tabIndex={0}>Digite o produto a ser pesquisado</label>
 			<input
 				placeholder="Nunca dejes de buscar"
 				name="searchText"
 				value={searchText}
 				onChange={(e) => setSearchText(e.target.value)}
+				id="searchText"
+				type="text"
+				tabIndex={0}
+				
 			/>
-			<button type="submit">
-				<img src="/icons/ic_Search.png" />
+			<button type="submit" tabIndex={0}>
+				<img src="/icons/ic_Search.png" alt="Ícone lupa" />
 			</button>
 		</Form>
 	);

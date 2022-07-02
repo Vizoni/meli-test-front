@@ -10,14 +10,14 @@ function ProductBox({ product }: ProductDetailPropTypes ) {
 		navigate(`/items/${product.id}`)
 	}
 	return (
-		<Container onClick={handleClick}>
+		<Container onClick={handleClick} tabIndex={0}>
 			<LeftSide>
-				<ProductPicture src={product.thumbnail} />
+				<ProductPicture src={product.thumbnail} alt="Miniatura da imagem do produto" />
 				<ProductInfo>
 					<Middle>
 						<Price>{formatCurrency(product.price.amount, product.price.decimals)}</Price>
 						{product.free_shipping && (
-							<FreeShippingIcon src="/icons/ic_shipping.png" />
+							<FreeShippingIcon src="/icons/ic_shipping.png" alt="Ícone de frete grátis"/>
 						)}
 					</Middle>
 					<Title>{product.title}</Title>
