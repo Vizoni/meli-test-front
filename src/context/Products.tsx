@@ -6,23 +6,7 @@ export const ProductsContext = React.createContext({} as ProductsContextProps);
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
 	const [products, setProducts] = useState<Product[]>([]);
-	const [selectedProduct, setSelectedProduct] = useState<Product>({
-			id: "",
-			title: "",
-			categories: [],
-			price: {
-				amount: 0,
-				decimals: 0,
-				currency: "",
-			},
-			thumbnail: "",
-			pictures: [],
-			condition: "",
-			free_shipping: false,
-			sold_quantity: 0,
-			city: "",
-			description: ""
-	})
+	const [selectedProduct, setSelectedProduct] = useState<Product>()
 	const [categories, setCategories] = useState([]);
 
 	async function listProducts(text: string) {

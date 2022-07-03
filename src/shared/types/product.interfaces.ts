@@ -10,7 +10,7 @@ export type ProductsContextProps = {
     listProducts: (text: string) => void;
     categories: string[];
     getProduct: (id: string) => void;
-    selectedProduct: Product;
+    selectedProduct?: Product;
 }
 
 export type Product = {
