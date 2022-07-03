@@ -1,30 +1,31 @@
 import React, { useState } from "react";
-import { getProductsByText, getProductById } from "../services/Products";
+import { getProductById, getProductsByTextWithPagination } from "../services/Products";
 import { Product, ProductsContextProps, ProductsProviderProps } from "../shared/types/product.interfaces";
 
 export const ProductsContext = React.createContext({} as ProductsContextProps);
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
+	const [pagination, setPagination] = useState({total: 0, primary_results: 0, offset: 1, limit: 1})
 	const [products, setProducts] = useState<Product[]>([]);
 	const [selectedProduct, setSelectedProduct] = useState<Product>()
 	const [categories, setCategories] = useState([]);
 
-	async function listProducts(text: string) {
-		const productsResponse = await getProductsByText(text);
-		setProducts(productsResponse.items);
-		setCategories(productsResponse.categories);
+	async function listProducts(text: string, offset: number) {
+		const response = await getProductsByTextWithPagination(text, offset);
+		setProducts(response.items);
+		setCategories(response.categories);
+		setPagination(response.pagination);
 	}
 
 	async function getProduct(id: string) {
 		const productResponse = await getProductById(id);
-		console.log("get product context", productResponse)
 		setSelectedProduct(productResponse.item);
 		setCategories(productResponse.item.categories);
 	}
 
 	return (
 		<ProductsContext.Provider
-			value={{ products, setProducts, listProducts, categories, getProduct, selectedProduct }}
+			value={{ products, setProducts, listProducts, categories, getProduct, selectedProduct, pagination }}
 		>
 			{children}
 		</ProductsContext.Provider>

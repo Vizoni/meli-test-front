@@ -1,7 +1,7 @@
 import { api } from './Api'
 
-export function getProductsByText(text: string) {
-  return api.get(`api/items?q=${text}`).then(response => response.data)
+export function getProductsByTextWithPagination(text: string, offset = 1) {
+  return api.get(`api/items?q=${text}&offset=${offset}`).then(response => response.data)
 }
 
 export function getProductById(id: string) {

@@ -7,10 +7,16 @@ export type ProductsProviderProps = {
 export type ProductsContextProps = {
     products: Product[];
     setProducts: (data: Product[]) => void;
-    listProducts: (text: string) => void;
+    listProducts: (text: string, offset: number) => void;
     categories: string[];
     getProduct: (id: string) => void;
     selectedProduct?: Product;
+    pagination: {
+        total: number;
+        primary_results: number;
+        offset: number;
+        limit: number;
+    };
 }
 
 export type Product = {
