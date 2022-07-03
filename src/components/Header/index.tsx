@@ -10,7 +10,7 @@ function Header() {
 	return (
 		<Container>
 			<Logo onClick={goToHome} tabIndex={0} role="button">
-				<img src="/icons/Logo_ML@2x.png.png" alt="Logo Mercado Libre" />
+				<img src="/icons/Logo_ML_2x.webp" alt="Logo Mercado Libre" />
 			</Logo>
 			<SearchBar />
 		</Container>

@@ -18,7 +18,7 @@ function ProductBox({ product }: ProductDetailPropTypes ) {
 					<Middle>
 						<Price data-testId="productbox-price">{formatCurrency(product.price.amount, product.price.decimals)}</Price>
 						{product.free_shipping && (
-							<FreeShippingIcon data-testId="productbox-shippingicon" src="/icons/ic_shipping.png" alt="Ícone de frete grátis"/>
+							<FreeShippingIcon data-testId="productbox-shippingicon" src="/icons/ic_shipping.webp" alt="Ícone de frete grátis"/>
 						)}
 					</Middle>
 					<Title>{product.title}</Title>

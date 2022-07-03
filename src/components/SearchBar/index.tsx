@@ -27,7 +27,7 @@ function SearchBar() {
 				
 			/>
 			<button type="submit" tabIndex={0}>
-				<img src="/icons/ic_Search.png" alt="Ícone lupa" />
+				<img src="/icons/ic_Search.webp" alt="Ícone lupa" />
 			</button>
 		</Form>
 	);
