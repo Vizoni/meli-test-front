@@ -59,56 +59,61 @@ const productList = [
 ]
 
 describe("Products API -> getProductsByText", () => {
-    it("Should get the products related to iphone", async () => {
-        expect.assertions(1)
-        const responseAPI = { categories: categoriesList, items: productList }
-        await expect(getProductsByText("Iphone")).resolves.toEqual(responseAPI)
+    it("Should get the correct response data structure for a found product", async () => {
+        expect.assertions(3)
+        return getProductsByText("Iphone").then(response => {
+            expect(response).toEqual(expect.objectContaining({
+                categories: expect.any(Array),
+                items: expect.any(Array)
+            }))
+            expect(response.categories.length).toBeGreaterThan(0)
+            expect(response.items.length).toBeGreaterThan(0)
+        })
     })
-    it("Should return empty response from empty search param", async () => {
-        expect.assertions(1)
-        const responseAPI = { categories: [], items: [] }
-        await expect(getProductsByText("")).resolves.toEqual(responseAPI)
+    it("Should get the correct response data structure for a not found product", async () => {
+        expect.assertions(3)
+        return getProductsByText("JDSAKDJJDASOIJDSQWE").then(response => {
+            expect(response).toEqual(expect.objectContaining({
+                categories: expect.any(Array),
+                items: expect.any(Array)
+            }))
+            expect(response.categories.length).not.toBeGreaterThan(0)
+            expect(response.items.length).not.toBeGreaterThan(0)
+        })
     })
 })
 
 describe("Products API -> getProductById", () => {
-    it("Should get the details of product id MLA1119561622", async () => {
-        expect.assertions(1)
-        const responseAPI = {
-            "item": {
-                "id": "MLA1119561622",
-                "title": "Apple iPhone 11 (128 Gb) - Blanco",
-                "categories": [
-                    "Celulares y Teléfonos",
-                    "Celulares y Smartphones"
-                ],
-                "price": {
-                    "currency": "ARS",
-                    "amount": 214499,
-                    "decimals": 22
-                },
-                "thumbnail": "http://http2.mlstatic.com/D_796892-MLA46114829828_052021-I.jpg",
-                "pictures": [
-                    "http://http2.mlstatic.com/D_796892-MLA46114829828_052021-O.jpg",
-                    "http://http2.mlstatic.com/D_781098-MLA46114829829_052021-O.jpg"
-                ],
-                "condition": "new",
-                "free_shipping": true,
-                "sold_quantity": 50,
-                "city": "Agronomía",
-                "description": "Graba videos 4K y captura retratos espectaculares y paisajes increíbles con el sistema de dos cámaras. Toma grandes fotos con poca luz gracias al modo Noche. Disfruta colores reales en las fotos, videos y juegos con la pantalla Liquid Retina de 6.1 pulgadas (3). Aprovecha un rendimiento sin precedentes en los juegos, la realidad aumentada y la fotografía con el chip A13 Bionic. Haz mucho más sin necesidad de volver a cargar el teléfono gracias a su batería de larga duración (2). Y no te preocupes si se moja, el iPhone 11 tiene una resistencia al agua de hasta 30 minutos a una profundidad máxima de 2 metros (1).\n\n\nAvisos Legales\n(1) El iPhone 11 es resistente a las salpicaduras, al agua y al polvo, y fue probado en condiciones de laboratorio controladas, con una clasificación IP68 según la norma IEC 60529 (hasta 30 minutos a una profundidad máxima de 2 metros). La resistencia a las salpicaduras, al agua y al polvo no es una condición permanente, y podría disminuir como consecuencia del uso normal. No intentes cargar un iPhone mojado; consulta el manual del usuario para ver las instrucciones de limpieza y secado. La garantía no cubre daños producidos por líquidos.\n(2) La duración de la batería varía según el uso y la configuración.\n(3) La pantalla tiene las esquinas redondeadas. Si se mide en forma de rectángulo, la pantalla del iPhone 11 tiene 6.06 pulgadas en diagonal. El área real de visualización es menor.\n(4) Los cargadores inalámbricos Qi se venden por separado."
-            }
-        }
-        await expect(getProductById("MLA1119561622")).resolves.toEqual(responseAPI)
+    it("Should return the correct response structure for a found product", async () => {
+        expect.assertions(4)
+        return getProductById("MLA1119561622").then(product => {
+            console.log("PRODUTOo", product)
+            expect(product).toEqual(expect.objectContaining({
+                item: expect.any(Object),
+            }))
+            expect(product.item).toEqual(expect.objectContaining({
+                id: expect.any(String),
+                title: expect.any(String),
+                categories: expect.any(Array),
+                price: expect.any(Object),
+                thumbnail: expect.any(String),
+                pictures: expect.any(Array),
+                condition: expect.any(String),
+                free_shipping: expect.any(Boolean),
+                sold_quantity: expect.any(Number),
+                city: expect.any(String),
+                description: expect.any(String),
+            }))
+            expect(product.item.categories.length).toBeGreaterThanOrEqual(0);
+            expect(product.item.pictures.length).toBeGreaterThanOrEqual(0);
+
+        })
     })
-    it("Should return empty response from empty search param", async () => {
-        expect.assertions(1)
-        const responseAPI = {
-            "error": "resource not found",
-            "message": "Si quieres conocer los recursos de la API que se encuentran disponibles visita el Sitio de Desarrolladores de MercadoLibre (http://developers.mercadolibre.com)"
-        }
+    it("Should return 404 status code from an invalid id or not found product", async () => {
+        expect.assertions(2)
         return getProductById("MLA1120001051dsf").catch(e => {
-            expect(e.response.data).toEqual(responseAPI)
+            expect(e.response.status).toEqual(404)
+            expect(e.response.data).toBeDefined()
         })
     })
 })
