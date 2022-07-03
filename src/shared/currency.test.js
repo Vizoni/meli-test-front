@@ -1,12 +1,22 @@
 import '@testing-library/jest-dom/extend-expect'
-import {  formatCurrency } from "./currency"
+import {  formatCurrency, formatCurrencyWithoutDecimal } from "./currency"
 
 describe("Format money amount", () => {
-    it("Should format the money value like $1.234,99", () => {
+    it("Should format the money value using just integer", () => {
+        const amount = 5555;
+        expect(formatCurrencyWithoutDecimal(amount)).toEqual("$ 5.555")
+    })
+
+    it("Should format the money value using integer and decimals", () => {
         const amount = 1234;
         const decimals = 99;
-        const functionResponse = formatCurrency(amount, decimals)
-        expect(functionResponse).toEqual("$ 1.234,99")
+        expect(formatCurrency(amount, decimals)).toEqual("$ 1.234,99")
+    })
+
+    it("Should format the money value using integer with undefined decimals", () => {
+        const amount = 44;
+        const decimals = '';
+        expect(formatCurrency(amount, decimals)).toEqual("$ 44,00")
     })
 
     it("Should call one time the function with params to format a value with decimals", () => {
