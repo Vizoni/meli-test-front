@@ -4,15 +4,37 @@ export const Container = styled.div`
 	background-color: white;
 	border-bottom: 1px solid var(--light-grey);
 	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
+	flex-direction: row;
 	padding: 2rem;
+
+	h1 {
+		font-weight: normal;
+	}
+
+	@media (max-width: 1330px) {
+		flex-direction: column-reverse;
+		align-self: center;
+		justify-content: center;
+		padding: 0;
+		width: 100%;
+	}
 `;
 
-export const DescriptionBox = styled.span`
-	font-size: var(--extra-small);
-	margin: 2rem 0;
-	text-align: justify;
+export const DescriptionBox = styled.div`
+	margin: 2rem 0 0 2rem;
+	max-width: 680px;
+	span {
+		font-size: var(--extra-small);
+		margin: 2rem 0;
+		text-align: justify;
+	}
+
+	@media (max-width: 1330px) {
+		flex-direction: column-reverse;
+		align-self: center;
+		justify-content: center;
+		margin: 2rem;
+	}
 `
 
 export const Upper = styled.div`
@@ -27,9 +49,15 @@ export const Upper = styled.div`
 	} 
 `
 
-export const BuyBox = styled.div`
+export const Sides = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	overflow: hidden;
+	width: 100%;
+`
+
+export const BuyBox = styled.div`
 	margin: 1rem;
 
 	button {
@@ -40,10 +68,7 @@ export const BuyBox = styled.div`
 		border-radius: 0.2rem;
 		padding: 0.75rem;
 		cursor: pointer;
-
-		@media (max-width: 900px) {
-			margin-bottom: 2rem;
-		} 
+		width: 100%;
 	}
 
 `
@@ -58,18 +83,6 @@ export const PriceDetail = styled.div`
 
 	span {
 		font-size: var(--large);
-	}
-
-	
-	@media (max-width: 1000px) {
-		small {
-			font-size: var(--normal-medium);
-		}
-	
-		span {
-			font-size: var(--medium-large)
-		}
-
 	}
 `
 
@@ -95,15 +108,6 @@ export const ProductPicture = styled.img`
 	height: auto;
 	border-radius: 4px;
 	margin-bottom: 1rem;
-	object-fit: center;
-	
-	@media (min-width: 600px) and (max-width: 899px) {
-		width: 100%;
-	} 
-	@media (max-width: 950px) {
-		width: 100%;
-	} 
-
 	
 `
 

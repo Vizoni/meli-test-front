@@ -7,18 +7,6 @@ export const Container = styled.div`
 	justify-content: space-between;
 	cursor: pointer;
 
-	span {
-		@media (min-width: 300px) and (max-width: 528px) {
-		font-size: var(--small);
-		} 
-		@media (min-width: 530px) and (max-width: 624px) {
-			font-size: var(--normal);
-		} 
-		@media (min-width: 625px) and (max-width: 730px) {
-			font-size: var(--normal-medium) ;
-		} 
-	}
-
 `;
 
 export const Middle = styled.div`
@@ -27,16 +15,38 @@ export const Middle = styled.div`
 
 export const Price = styled.span`
 	font-size: var(--medium);
-	font-weight: normal;	
+	font-weight: normal;
+	@media (max-width: 550px) {
+		font-size: var(--normal-medium);
+	} 
+	@media (max-width: 500px) {
+		font-size: var(--normal);
+	} 
+		
 `
 
 export const City = styled.span`
-	font-size: var(--extra-small);
-	margin: 3rem 5rem;
+	font-size: var(--extra-small) !important;
+	margin: 3rem 3rem;
+	
+	@media (min-width: 500px) and (max-width: 729px) {
+		font-size: var(--small) !important;
+		margin: 3rem 2rem;
+	} 
+
+	@media (max-width: 500px) {
+		display: none
+	} 
 `
 
 export const Title = styled.span`
 	font-size: var(--medium);
+	@media (max-width: 550px) {
+		font-size: var(--normal-medium);
+	} 
+	@media (max-width: 500px) {
+		font-size: var(--normal);
+	} 
 `
 
 export const ProductPicture = styled.img`
@@ -55,9 +65,10 @@ export const LeftSide = styled.div`
 
 export const ProductInfo = styled.div`
 	margin-top: 2rem;
-	h3 {
-		margin-top: 2rem;
-		font-weight: normal;
+
+	@media (max-width: 550px) {
+		margin-top: 1.5rem
+	
 	}
 `
 
