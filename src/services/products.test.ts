@@ -2,62 +2,6 @@ import '@testing-library/jest-dom/extend-expect'
 
 import { getProductsByText, getProductById } from "./Products"
 
-const categoriesList = ["Celulares y Teléfonos", "Celulares y Smartphones"]
-const productList = [
-    {
-        "id": "MLA1120025735",
-        "title": "Apple iPhone 11 (64 Gb) - Blanco",
-        "thumbnail": "http://http2.mlstatic.com/D_809326-MLA46115014340_052021-I.jpg",
-        "condition": "new",
-        "free_shipping": true,
-        "city": "Agronomía",
-        "price": {
-            "currency": "ARS",
-            "amount": 249999,
-            "decimals": null
-        }
-    },
-    {
-        "id": "MLA1119561622",
-        "title": "Apple iPhone 11 (128 Gb) - Blanco",
-        "thumbnail": "http://http2.mlstatic.com/D_796892-MLA46114829828_052021-I.jpg",
-        "condition": "new",
-        "free_shipping": true,
-        "city": "Agronomía",
-        "price": {
-            "currency": "ARS",
-            "amount": 274999,
-            "decimals": null
-        }
-    },
-    {
-        "id": "MLA1117980186",
-        "title": "Apple iPhone 12 (128 Gb) - Negro",
-        "thumbnail": "http://http2.mlstatic.com/D_743195-MLA45719932493_042021-I.jpg",
-        "condition": "new",
-        "free_shipping": true,
-        "city": "Agronomía",
-        "price": {
-            "currency": "ARS",
-            "amount": 292999,
-            "decimals": null
-        }
-    },
-    {
-        "id": "MLA1109011009",
-        "title": "Apple iPhone 13 (128 Gb) - (product)red",
-        "thumbnail": "http://http2.mlstatic.com/D_834059-MLA47781378504_102021-I.jpg",
-        "condition": "new",
-        "free_shipping": true,
-        "city": "Palermo",
-        "price": {
-            "currency": "ARS",
-            "amount": 281999,
-            "decimals": null
-        }
-    }
-]
-
 describe("Products API -> getProductsByText", () => {
     it("Should get the correct response data structure for a found product", async () => {
         expect.assertions(3)
@@ -87,7 +31,6 @@ describe("Products API -> getProductById", () => {
     it("Should return the correct response structure for a found product", async () => {
         expect.assertions(4)
         return getProductById("MLA1119561622").then(product => {
-            console.log("PRODUTOo", product)
             expect(product).toEqual(expect.objectContaining({
                 item: expect.any(Object),
             }))
