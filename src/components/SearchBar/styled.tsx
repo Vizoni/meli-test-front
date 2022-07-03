@@ -7,6 +7,10 @@ export const Form = styled.form`
 	height: 3.5vh;
 	width: 100%;
 	margin-left: 1rem;
+
+	@media (max-height: 799px) {
+		height: 5vh
+	}
 	
 	label {
 		display: none;

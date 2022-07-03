@@ -4,6 +4,7 @@ import ProductList from "./../components/ProductList";
 import Page from "./../components/Page";
 import { useProducts } from "./../context/Products";
 import { useSearchParams } from 'react-router-dom'
+import EmptySearch from "../components/EmptySearch";
 function HomePage() {
 	const { products, categories, listProducts } = useProducts();
 
@@ -28,6 +29,7 @@ function HomePage() {
 					<ProductList />
 				</>
 			)}
+			{products.length <= 0 && (<EmptySearch />)}
 		</Page>
 	);
 }

@@ -6,6 +6,13 @@ export const Container = styled.header`
 	display: flex;
 	justify-content: center;
 	flex-flow: row;
+
+	@media (min-height: 800px) and (max-height: 1000px) {
+		height: 7vh
+	}
+	@media (max-height: 799px) {
+		height: 8vh
+	}
 `;
 
 export const Logo = styled.div`
