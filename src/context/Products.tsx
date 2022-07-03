@@ -10,7 +10,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
 	const [selectedProduct, setSelectedProduct] = useState<Product>()
 	const [categories, setCategories] = useState([]);
 
-	async function listProducts(text: string, offset: number) {
+	async function listProducts(text: string, offset = 1) {
 		const response = await getProductsByTextWithPagination(text, offset);
 		setProducts(response.items);
 		setCategories(response.categories);

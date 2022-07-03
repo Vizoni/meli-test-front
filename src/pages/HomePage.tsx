@@ -15,7 +15,7 @@ function HomePage() {
 	}, [searchParams])
 
 	async function userIsSearching() {
-		if (searchParams) {
+		if (searchParams && searchParams.get("search")) {
 			const searchText = searchParams.get("search") as string;
 			listProducts(searchText)
 		}

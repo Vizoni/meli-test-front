@@ -11,7 +11,7 @@ function ProductList() {
 					return <ProductBox product={product} key={index} />;
 				})}
 			</Container>
-			<Pagination />
+			{products && <Pagination />}
 		</>
 	);
 }
