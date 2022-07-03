@@ -17,7 +17,7 @@ export const Form = styled.form`
 	}
 
 	input {
-		width: 93%;
+		width: 100%;
 		font-size: var(--normal-medium);
 		border: 0;
 		outline: 0;
