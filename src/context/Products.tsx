@@ -27,15 +27,15 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
 
 	async function listProducts(text: string) {
 		const productsResponse = await getProductsByText(text);
-		setProducts(productsResponse.data.items);
-		setCategories(productsResponse.data.categories);
+		setProducts(productsResponse.items);
+		setCategories(productsResponse.categories);
 	}
 
 	async function getProduct(id: string) {
 		const productResponse = await getProductById(id);
 		console.log("get product context", productResponse)
-		setSelectedProduct(productResponse.data.item);
-		setCategories(productResponse.data.item.categories);
+		setSelectedProduct(productResponse.item);
+		setCategories(productResponse.item.categories);
 	}
 
 	return (
