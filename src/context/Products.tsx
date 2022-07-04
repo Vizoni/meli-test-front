@@ -25,7 +25,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
 
 	return (
 		<ProductsContext.Provider
-			value={{ products, setProducts, listProducts, categories, getProduct, selectedProduct, pagination }}
+			value={{ products, setProducts, listProducts, categories, getProduct, selectedProduct, pagination, setSelectedProduct }}
 		>
 			{children}
 		</ProductsContext.Provider>

@@ -6,13 +6,15 @@ import { useProducts } from "../context/Products";
 import { useSearchParams } from 'react-router-dom'
 
 function HomePage() {
-	const { products, categories, listProducts } = useProducts();
+	const { products, categories, listProducts, setSelectedProduct } = useProducts();
 
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		userIsSearching()
-		console.log("userIsSearching")
+		return () => {
+			setSelectedProduct();
+		}
 	}, [searchParams])
 
 	async function userIsSearching() {

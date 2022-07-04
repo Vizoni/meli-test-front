@@ -5,12 +5,13 @@ import Page from "./../components/Page";
 import { useProducts } from "./../context/Products";
 import { useParams } from 'react-router-dom'
 function ProductPage() {
-	const { selectedProduct, categories, getProduct } = useProducts();	
+	const { selectedProduct, categories, getProduct, setProducts } = useProducts();	
 
 	const {id} = useParams();
 
     useEffect(() => {
 		loadProduct()
+		setProducts([])
 	}, [])
 
 	async function loadProduct() {

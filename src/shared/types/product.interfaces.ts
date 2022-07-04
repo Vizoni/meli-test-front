@@ -11,6 +11,7 @@ export type ProductsContextProps = {
     categories: string[];
     getProduct: (id: string) => void;
     selectedProduct?: Product;
+    setSelectedProduct: (data?: any) => void;
     pagination: {
         total: number;
         primary_results: number;
