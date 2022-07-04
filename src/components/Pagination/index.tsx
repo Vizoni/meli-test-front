@@ -33,13 +33,13 @@ function Pagination() {
 	}
 
 	return (
-		<Container >
-			<Button onClick={() => getLastPage()}>{"<"} Anterior</Button>
+		<Container data-testId="pagination-component">
+			<Button data-testId="button-last-page" onClick={() => getLastPage()}>{"<"} Anterior</Button>
 			<div>
-				<CurrentPage>{currentPageNumber}</CurrentPage>
-				<Counter> de {calcPagesAmount()}</Counter>
+				<CurrentPage data-testId="current-page">{currentPageNumber}</CurrentPage>
+				<Counter data-testId="counter-page"> de {calcPagesAmount()}</Counter>
 			</div>
-			<Button onClick={()=> getNextPage()}>Próximo {">"}</Button>
+			<Button data-testId="button-next-page" onClick={()=> getNextPage()}>Próximo {">"}</Button>
 		</Container>
 	);
 }
