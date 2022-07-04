@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import CustomSkeleton from "./components/Skeleton";
 import { ProductsProvider } from "./context/Products";
 
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -13,7 +14,7 @@ function App() {
 			<ProductsProvider>
 				<BrowserRouter>
 				<Header />
-					<Suspense fallback={<div>Carregando...</div>}>
+					<Suspense fallback={<CustomSkeleton />}>
 						<Routes>
 							<Route path="/" element={<HomePage />} />
 							<Route path="/items" element={<ProductSearchPage />} />
