@@ -2,9 +2,12 @@
 <!-- PROJECT LOGO -->
 <div align="center">
 
-<h3 align="center">meli-test-front</h3>
+<h2 align="center">meli-test-front</h2>
 
   <p align="center">
+    <a href="https://meli-test-front.vercel.app/"><strong>LIVE DEMO »<strong></a>
+    <br />
+    <br />
     <a href="https://github.com/Vizoni/meli-test-front"><strong>Explore the docs »</strong></a>
     <br />
     ·
@@ -82,10 +85,24 @@ Checkout the API documentation. There's a Postman Collection to test everything.
     - [x] Product list page
     - [x] Product detail page
     - [ ] Pagination
-    - [ ] Skeleton
-- [ ] Tests
-- [ ] Lazy Loading
+        - [x] Mocked searched term (iphone)
+        - [ ] Memorize previous page product list
+        - [ ] Correct searched term  
+    - [x] Skeleton
+- [x] Tests
+- [x] Lazy Loading
+- [x] [Deployed on Vercel](https://meli-test-front.vercel.app/)
+- [x] Responsive design
+    - [x] Global style
+    - [x] Relative units
+    - [x] Flexbox
+    - [x] Styled Component
+    - [x] Converted .png icons to .webp
 - [ ] Accessibility
+    - [x] Keyboard Navigation
+    - [ ] Alt text for images
+    - [ ] Defined roles
+    - [ ] [WAI-Aria concepts](https://www.w3.org/WAI/standards-guidelines/aria/)
 - [ ] Internationalization (i18n)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
