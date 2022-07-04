@@ -1,28 +1,31 @@
 import '@testing-library/jest-dom/extend-expect'
 
-import { getProductsByText, getProductById } from "./Products"
+import { getProductsByTextWithPagination, getProductById } from "./Products"
 
-describe("Products API -> getProductsByText", () => {
+describe("Products API -> getProductsByTextWithPagination", () => {
     it("Should get the correct response data structure for a found product", async () => {
         expect.assertions(3)
-        return getProductsByText("Iphone").then(response => {
+        return getProductsByTextWithPagination("Iphone", 1).then(response => {
             expect(response).toEqual(expect.objectContaining({
                 categories: expect.any(Array),
-                items: expect.any(Array)
+                items: expect.any(Array),
+                pagination: expect.any(Object)
             }))
             expect(response.categories.length).toBeGreaterThan(0)
             expect(response.items.length).toBeGreaterThan(0)
         })
     })
     it("Should get the correct response data structure for a not found product", async () => {
-        expect.assertions(3)
-        return getProductsByText("JDSAKDJJDASOIJDSQWE").then(response => {
-            expect(response).toEqual(expect.objectContaining({
+        expect.assertions(4)
+        return getProductsByTextWithPagination("JDSAKDJJDASOIJDSQWE", 1).catch(error => {
+            expect(error.response.data).toEqual(expect.objectContaining({
                 categories: expect.any(Array),
-                items: expect.any(Array)
+                items: expect.any(Array),
+                pagination: expect.any(Object)
             }))
-            expect(response.categories.length).not.toBeGreaterThan(0)
-            expect(response.items.length).not.toBeGreaterThan(0)
+            expect(error.response.data.categories.length).not.toBeGreaterThan(0)
+            expect(error.response.data.items.length).not.toBeGreaterThan(0)
+            expect(error.response.status).toEqual(404)
         })
     })
 })
