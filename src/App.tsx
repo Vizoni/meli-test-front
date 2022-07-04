@@ -5,6 +5,7 @@ import { ProductsProvider } from "./context/Products";
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const ProductPage = lazy(() => import('./pages/ProductPage'))
+const ProductSearchPage = lazy(() => import('./pages/ProductSearchPage'))
 
 function App() {
 	return (
@@ -15,7 +16,7 @@ function App() {
 					<Suspense fallback={<div>Carregando...</div>}>
 						<Routes>
 							<Route path="/" element={<HomePage />} />
-							<Route path="/items" element={<HomePage />} />
+							<Route path="/items" element={<ProductSearchPage />} />
 							<Route path="/items/:id" element={<ProductPage />} />
 						</Routes>
 					</Suspense>
